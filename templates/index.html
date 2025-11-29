@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Treinamento Corporativo - Gamificado</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Portal de Treinamento</h1>
+    </header>
+
+    <main class="container">
+        {% if resultado %}
+            <div class="card-resultado {{ classe }}">
+                <h2>Resultado do Quiz</h2>
+                <p>Sua pontuação: <strong>{{ pontos }} XP</strong></p>
+                <p>{{ mensagem }}</p>
+                <a href="/quiz" class="btn">Tentar Novamente</a>
+            </div>
+        {% else %}
+            <section class="conteudo">
+                <h2>Módulo 1: Atendimento de Excelência</h2>
+                <p>Bem-vindo ao treinamento. Leia os pontos abaixo antes de iniciar o desafio.</p>
+                <ul>
+                    <li>Escute o cliente antes de propor soluções.</li>
+                    <li>Utilize a base de conhecimento para dúvidas técnicas.</li>
+                    <li>O sistema funciona offline para garantir agilidade.</li>
+                </ul>
+                
+                <div class="acao">
+                    <h3>Está preparado?</h3>
+                    <a href="/quiz" class="btn-start">Iniciar Desafio (Quiz)</a>
+                </div>
+            </section>
+        {% endif %}
+    </main>
+
+</body>
+</html>

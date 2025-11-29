@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz - Desafio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Desafio de Conhecimento</h1>
+    </header>
+
+    <main class="container">
+        <form action="/resultado" method="POST">
+            {% for questao in questoes %}
+                <div class="card-pergunta">
+                    <h3>{{ loop.index }}. {{ questao.pergunta }}</h3>
+                    
+                    <div class="opcoes">
+                        {% for opcao in questao.opcoes %}
+                            <label>
+                                <input type="radio" name="{{ questao.id }}" value="{{ opcao }}" required>
+                                {{ opcao }}
+                            </label><br>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="btn-enviar">Enviar Respostas</button>
+        </form>
+    </main>
+
+</body>
+</html>
